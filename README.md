@@ -1,24 +1,61 @@
+# Yoga Booking System
 
-**Assessment 1.2 (Total Marks **20**)**
+## Project Overview
+This project is a full-stack web application developed using Node.js, Express, React, and MongoDB. The application allows users to register, log in, and manage booking-related data through CRUD operations.
 
-Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
+## Features
+- User authentication
+- Create, Read, Update, and Delete (CRUD) functionality
+- Frontend developed using React
+- Backend API built using Node.js and Express
+- MongoDB database integration
+- Deployment on AWS EC2
+- Process management using PM2
 
+## Technology Stack
+- Frontend: React.js
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Deployment: AWS EC2
+- Process Manager: PM2
+- Version Control: GitHub
 
----
+## Project Structure
+backend/
+frontend/
 
-**Objective**
+## Setup Instructions
 
-For this assessment, you have already been assigned a project. Your task is to develop a system that implements CRUD (Create, Read, Update, Delete) operations based on the selected project. The system should include both a user panel and an admin panel. Depending on the nature of your chosen project, you may decide how many CRUD operations are required to support the functionality of the system. You have been provided with a starter project that includes user authentication using Node.js, React.js, and MongoDB, your should extend this application based on your assigned project requirements. Ensure that the implemented features are appropriate and meaningful for your selected project. Your project should include the following:
-In this assignment you will complete the following tasks:
+### Clone the repository
+git clone https://github.com/swb08/yogabooking.git
+cd yogabooking
 
-* **Basic Version Control using GitHub**
-* **Development, CI/CD Integration for Automated Deployment**
-* **Project report**
+### Backend setup
+cd backend
+npm install
+npm start
 
- 
----
+### Frontend setup
+cd frontend
+npm install
+npm start
 
-**GitHub link of the starter project: **[https://github.com/nahaQUT/sampleapp_IFQ636.git](https://github.com/nahaQUT/sampleapp_IFQ636.git)
+## Running the Application
+The application runs on:
+http://localhost:3000
 
----
+## Deployment
+The application has been deployed on an AWS EC2 instance and is managed using PM2.
 
+To check running processes:
+pm2 list
+
+## Authentication
+Users can register and log in using the application interface.
+
+## Public URL
+The application is deployed on an EC2 instance. Internal access has been verified via:
+http://localhost:3000
+
+## Author
+Shane Brann
