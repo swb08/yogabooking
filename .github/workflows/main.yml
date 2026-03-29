@@ -3,53 +3,25 @@ name: Yogabooking CI-CD
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
 
 jobs:
-  build_and_test:
-    name: Build and Test
+  build_and_verify:
+    name: Build and Verify
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
+          node-version: 20
 
-      - name: Install project dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Run pipeline Check
-        run:
-          echo "Pipeline test Pass"
-          np  -v
-
-  deploy_to_ec2:
-    name: Deploy to EC2
-    needs: build_and_test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Connect and deploy application
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/yogabooking
-            git pull origin main
-            npm ci
-            npm run build || true
-            pm2 restart yogabooking || pm2 start npm --name "yogabooking" -- start
+      - name: Run pipeline check
+        run: |
+          echo "Pipeline execution successful"
+          node -v
