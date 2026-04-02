@@ -1,7 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 
-const BookingList = ({ bookings, setBookings, setEditingBookings }) => {
+const BookingList = ({ bookings, setBookings, setEditingBooking }) => {
   const { user } = useAuth();
 
   const handleDelete = async (bookingId) => {

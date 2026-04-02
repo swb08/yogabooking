@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
 
-const BookingForm = ({ bookings, setBookings, editingBookings, setEditingBooking }) => {
+const BookingForm = ({ bookings, setBookings, editingBooking, setEditingBooking }) => {
   const { user } = useAuth();
   const [formData, setFormData] = useState({ title: '', description: '', deadline: '' });
 
@@ -25,7 +25,7 @@ const BookingForm = ({ bookings, setBookings, editingBookings, setEditingBooking
         const response = await axiosInstance.put(`/api/bookings/${editingBooking._id}`, formData, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        setBookins(bookings.map((booking) => (booking._id === response.data._id ? response.data : booking)));
+        setBookings(bookings.map((booking) => (booking._id === response.data._id ? response.data : booking)));
       } else {
         const response = await axiosInstance.post('/api/bookings', formData, {
           headers: { Authorization: `Bearer ${user.token}` },
